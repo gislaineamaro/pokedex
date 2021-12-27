@@ -1,4 +1,4 @@
-# Pokedex
+# <img src="https://img.icons8.com/color/50/000000/pokeball-2.png" style="width:29px;"/> Pokedex
 
 <img src="./src/assets/pokedexPrint1.PNG" alt="Print da pagina inicial da pokedex.">
 
