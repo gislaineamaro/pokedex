@@ -1,6 +1,6 @@
 # Pokedex
 
-<img src="./src/assets/pokedexPrint1.png" alt="Print da pagina inicial da pokedex.">
+<img src="./src/assets/pokedexPrint1.PNG" alt="Print da pagina inicial da pokedex.">
 
 > Projeto criado com objetivo de consumir a pokeApi fazendo uma listagem dos pokemons e utilizando bootstrap e javascript.
 
