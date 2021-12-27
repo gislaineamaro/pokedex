@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body {
+  background-color: #bdfaa7;
+}
+.background-test {
+  background-image: url('https://mocah.org/thumbs/4589154-pokmon-video-games-pixel-art-pixels.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: 'fixed';
+  background-position: 'center';
+}
+.img-logo {
+  width: 100%;
+}
+.btn-submit {
+  background-color: #08744c;
+  color: #fff;
+}
+.btn-submit:hover {
+  background-color: #0c9b66;
+  color: #fff;
+}
+.title-pixelated {
+  font-family: 'VT323', monospace;
+}
+.cardGeneric {
+  width: 600px;
+}
+.img-pokemon {
+  width: 150px;
+  height: 150px;
+}
+.img-pokemon:hover {
+  transform: scale(1.09);
+}
+.img-pokemon-type {
+  width: 30px;
+  height: 40px;
+}
+.btn.disabled.btn-type,
+.btn.btn-type:disabled {
+  opacity: 1 !important;
+}
+.img-pokemon-fire {
+  background-color: #ff9421;
+}
+.img-pokemon-water {
+  background-color: #3a84f1;
+}
+.img-pokemon-grass {
+  background-color: #14dc67;
+}
+.img-pokemon-normal {
+  background-color: #bab194;
+}
+.img-pokemon-electric {
+  background-color: #fce325;
+}
+.img-pokemon-ice {
+  background-color: #89d0ff;
+}
+.img-pokemon-dragon {
+  background-color: #a208d1;
+}
+.img-pokemon-rock,
+.img-pokemon-dark {
+  background-color: #865a1f;
+}
+.img-pokemon-steel {
+  background-color: #666666;
+}
+.img-pokemon-bug {
+  background-color: #a2dc53;
+}
+.img-pokemon-fairy {
+  background-color: #e2b0c5;
+}
+.img-pokemon-poison {
+  background-color: #b31ae1;
+}
+.img-pokemon-ghost,
+.img-pokemon-flying {
+  background-color: #d36af3;
+}
+.img-pokemon-fighting {
+  background-color: #d00909;
+}
+.img-pokemon-psychic {
+  background-color: #f34087;
+}
+.img-pokemon-ground {
+  background-color: #b99769;
+}
