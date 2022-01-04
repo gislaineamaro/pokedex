@@ -48,6 +48,9 @@ body {
 .btnNext {
   width: 100px;
 }
+.hidden {
+  display: none !important;
+}
 .img-pokemon-fire {
   background-color: #ff9421;
 }

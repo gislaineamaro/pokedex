@@ -2,6 +2,7 @@ var next
 var results = []
 var previous
 var rangePage = 1
+var isLoading = false
 
 window.onload = () => {
   const btnPrevious = document.querySelector('[data-btnPrevious]')
@@ -9,19 +10,20 @@ window.onload = () => {
   const countPage = document.querySelector('[data-page]')
   countPage.innerHTML = rangePage
 
-  btnNetx.addEventListener('click', () => {
-    CarregaPokemons(next)
-
-    if (next != null) {
+  btnNetx.addEventListener('click', async () => {
+    const hasNextPage = next != null
+    await CarregaPokemons(next)
+    if (hasNextPage) {
       countPage.innerHTML = ++rangePage
     } else {
       countPage.innerHTML = rangePage
     }
   })
 
-  btnPrevious.onclick = () => {
-    CarregaPokemons(previous)
-    if (previous != null) {
+  btnPrevious.onclick = async () => {
+    const hasPreviousPage = previous != null
+    await CarregaPokemons(previous)
+    if (hasPreviousPage) {
       countPage.innerHTML = --rangePage
     } else {
       countPage.innerHTML = rangePage
@@ -29,9 +31,24 @@ window.onload = () => {
   }
 }
 
-CarregaPokemons('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')
-function CarregaPokemons(url) {
-  fetch(url)
+function setIsLoading(loading) {
+  isloading = loading
+  const loadingElement = document.querySelector('[data-loading]')
+  const list = document.querySelector('[data-list]')
+
+  if (isloading) {
+    loadingElement.classList.remove('hidden')
+    list.classList.add('hidden')
+  } else {
+    loadingElement.classList.add('hidden')
+    list.classList.remove('hidden')
+  }
+}
+
+CarregaPokemons('https://pokeapi.co/api/v2/pokemon?limit=30&offset=0')
+async function CarregaPokemons(url) {
+  setIsLoading(true)
+  await fetch(url)
     .then(response => response.json())
     .then(data => {
       next = data.next
@@ -43,9 +60,9 @@ function CarregaPokemons(url) {
     })
 }
 
-function PercorreResultados() {
+async function PercorreResultados() {
   for (let resultados of results) {
-    fetch(resultados.url)
+    await fetch(resultados.url)
       .then(response => {
         response.json().then(data => {
           const Name = data.name
@@ -61,6 +78,7 @@ function PercorreResultados() {
       })
       .catch(e => console.log('Erro' + e, message))
   }
+  setIsLoading(false)
 }
 
 function CriaElemento(name, id, img, type) {
