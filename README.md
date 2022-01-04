@@ -11,7 +11,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Trazer dados da Api
 - [x] Filtrar as informações
 - [x] Trazer os dados dinâmicamente
-- [ ] Fazer a paginação da lista
+- [x] Fazer a paginação da lista
 - [ ] Tornar possível a busca de pokemons
 
 [⬆ Voltar ao topo](#pokedex)<br>
