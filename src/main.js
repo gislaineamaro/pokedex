@@ -1,34 +1,67 @@
 var next
 var results = []
 var previous
-fetch(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=0`)
-  .then(response => response.json())
-  .then(data => {
-    next = data.next
-    previous = data.previous
-    results = data.results
-    PercorreResultados()
+var rangePage = 1
+
+window.onload = () => {
+  const btnPrevious = document.querySelector('[data-btnPrevious]')
+  const btnNetx = document.querySelector('[data-btnNext]')
+  const countPage = document.querySelector('[data-page]')
+  countPage.innerHTML = rangePage
+
+  btnNetx.addEventListener('click', () => {
+    CarregaPokemons(next)
+
+    if (next != null) {
+      countPage.innerHTML = ++rangePage
+    } else {
+      countPage.innerHTML = rangePage
+    }
   })
 
+  btnPrevious.onclick = () => {
+    CarregaPokemons(previous)
+    if (previous != null) {
+      countPage.innerHTML = --rangePage
+    } else {
+      countPage.innerHTML = rangePage
+    }
+  }
+}
+
+CarregaPokemons('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0')
+function CarregaPokemons(url) {
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      next = data.next
+      previous = data.previous
+      results = data.results
+      document.querySelector('[data-list]').innerHTML = ''
+
+      PercorreResultados()
+    })
+}
+
 function PercorreResultados() {
-  for (const resultados of results) {
+  for (let resultados of results) {
     fetch(resultados.url)
       .then(response => {
         response.json().then(data => {
           const Name = data.name
           const id = data.id
-          const img = data.sprites.other.dream_world.front_default
+          const img =
+            data.sprites.other.dream_world.front_default ||
+            data.sprites.other['official-artwork'].front_default ||
+            data.sprites.front_default
           const type = data.types[0].type.name
 
-          console.log(Name, id, img, type)
           CriaElemento(Name, id, img, type)
         })
       })
       .catch(e => console.log('Erro' + e, message))
   }
 }
-
-// for (let index = 1; index < 20; index++) {
 
 function CriaElemento(name, id, img, type) {
   const list = document.querySelector('[data-list]')
@@ -49,14 +82,14 @@ function CriaElemento(name, id, img, type) {
           <img
           src="./assets/icons/${type}.svg"
           data-img-pokemon
-          class="img-fluid rounded-start img-pokemon-${type}"
+          class="img-fluid rounded-start"
           style="width: 30px;"
           alt=""
           />                            
           ${type}</button>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <img
           src="${img}"
           data-img-pokemon

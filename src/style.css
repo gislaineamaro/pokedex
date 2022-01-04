@@ -45,6 +45,9 @@ body {
 .btn.btn-type:disabled {
   opacity: 1 !important;
 }
+.btnNext {
+  width: 100px;
+}
 .img-pokemon-fire {
   background-color: #ff9421;
 }
